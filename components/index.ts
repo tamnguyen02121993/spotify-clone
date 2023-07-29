@@ -9,6 +9,9 @@ import Modal from "./Modal";
 import AuthModal from "./AuthModal";
 import UploadModal from "./UploadModal";
 import Input from "./Input";
+import PlayButton from "./PlayButton";
+import MediaItem from "./MediaItem";
+import SearchInput from "./SearchInput";
 
 export {
   Sidebar,
@@ -22,4 +25,7 @@ export {
   AuthModal,
   UploadModal,
   Input,
+  PlayButton,
+  MediaItem,
+  SearchInput,
 };
