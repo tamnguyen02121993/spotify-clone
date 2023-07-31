@@ -2,7 +2,7 @@
 
 import { TbPlaylist } from "react-icons/tb";
 import { AiOutlinePlus } from "react-icons/ai";
-import { useUser, useAuthModal, useUploadModal } from "@/hooks";
+import { useUser, useAuthModal, useUploadModal, useOnPlay } from "@/hooks";
 import { Song } from "@/types";
 import { MediaItem } from ".";
 
@@ -11,6 +11,7 @@ interface LibraryProps {
 }
 
 const Library: React.FC<LibraryProps> = ({ songs }) => {
+  const onPlay = useOnPlay(songs);
   const authModal = useAuthModal();
   const { user } = useUser();
   const uploadModal = useUploadModal();
@@ -39,7 +40,7 @@ const Library: React.FC<LibraryProps> = ({ songs }) => {
 
       <div className="flex flex-col gap-y-2 mt-4 px-3">
         {songs.map((song) => (
-          <MediaItem onClick={() => {}} key={song.id} data={song} />
+          <MediaItem onClick={(id) => onPlay(id)} key={song.id} data={song} />
         ))}
       </div>
     </div>
