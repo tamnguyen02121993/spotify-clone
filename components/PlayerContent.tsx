@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+// @ts-ignore
 import useSound from "use-sound";
 import { BsPauseFill, BsPlayFill } from "react-icons/bs";
 import { AiFillStepBackward, AiFillStepForward } from "react-icons/ai";
