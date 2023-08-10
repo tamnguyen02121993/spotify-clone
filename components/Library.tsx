@@ -2,7 +2,13 @@
 
 import { TbPlaylist } from "react-icons/tb";
 import { AiOutlinePlus } from "react-icons/ai";
-import { useUser, useAuthModal, useUploadModal, useOnPlay } from "@/hooks";
+import {
+  useUser,
+  useAuthModal,
+  useUploadModal,
+  useOnPlay,
+  useSubscribeModal,
+} from "@/hooks";
 import { Song } from "@/types";
 import { MediaItem } from ".";
 
@@ -13,14 +19,17 @@ interface LibraryProps {
 const Library: React.FC<LibraryProps> = ({ songs }) => {
   const onPlay = useOnPlay(songs);
   const authModal = useAuthModal();
-  const { user } = useUser();
+  const subscribeModal = useSubscribeModal();
+  const { user, subscription } = useUser();
   const uploadModal = useUploadModal();
   const onClick = () => {
     if (!user) {
       return authModal.onOpen();
     }
 
-    // TODO: Check for subscription
+    if (!subscription) {
+      return subscribeModal.onOpen();
+    }
 
     return uploadModal.onOpen();
   };
